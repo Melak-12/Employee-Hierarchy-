@@ -3,15 +3,48 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "@heroicons/react": "^2.0.18",
+    "@hookform/resolvers": "^3.1.1",
+    "@mantine/core": "^5.10.5",
+    "@mantine/dates": "^5.8.4",
+    "@mantine/dropzone": "^5.8.4",
+    "@mantine/form": "^5.10.5",
+    "@mantine/hooks": "^5.10.5",
+    "@mantine/modals": "^5.8.4",
+    "@mantine/notifications": "^5.8.4",
+    "@mantine/nprogress": "^5.8.4",
+    "@mantine/spotlight": "^5.8.4",
+    "@mantine/tiptap": "^5.8.4",
+    "@material-tailwind/react": "^2.0.6",
     "@reduxjs/toolkit": "^1.9.5",
+    "@tabler/icons": "^1.114.0",
+    "@tabler/icons-react": "^2.25.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
+    "@tiptap/extension-link": "^2.0.0-beta.204",
+    "@tiptap/react": "^2.0.0-beta.204",
+    "@tiptap/starter-kit": "^2.0.0-beta.204",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.3",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
+    "antd": "^5.6.4",
+    "axios": "^1.2.0",
+    "dayjs": "^1.11.6",
+    "firebase": "^10.0.0",
+    "lodash-es": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.45.1",
     "react-redux": "^8.1.1",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-table": "^7.8.0",
+    "react-treeview": "^0.4.7",
+    "tailwind-icons": "^1.0.1",
+    "web-vitals": "^2.1.4",
+    "yup": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,5 +69,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-router-dom": "^6.14.1",
+    "tailwindcss": "^3.3.2"
   }
 }

@@ -1,0 +1,40 @@
+@import '~@fortawesome/fontawesome-free/css/all.css';
+.hide-pagination-footer .ant-table-pagination {
+    display: none;
+    background-color: #ab6262;
+  }
+  .tables{
+    /* background-color: #ab6262; */
+    /* border-radius: "none"; */
+  }
+  .custom-table .ant-table-thead > tr > th {
+    background-color:  rgb(65, 77, 100);
+     /* Replace with your desired background color */
+  }
+  .custom-table .ant-table-thead > tr > th .ant-table-column-title {
+    color: red; /* Replace with your desired text color */
+  }
+  .custom-table .custom-row {
+    background-color: rgb(224, 232, 235);
+    color: #33575d;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* Replace with your desired background color */
+ font-size: medium;
+ 
+  }
+  .custom-table .ant-table-wrapper {
+    border: 9px solid red; /* Replace with your desired border styles */
+  }
+  
+  .custom-table .ant-table-thead > tr > th,
+  .custom-table .ant-table-tbody > tr > td {
+    border-radius: 23px solid ; /* Replace with your desired border styles */
+  }
+  .custom-table .ant-table-tbody > tr:last-child > td {
+    border-bottom-left-radius: 8px; /* Replace with your desired border radius */
+    border-bottom-right-radius: 8px; /* Replace with your desired border radius */
+  }
+  input.error,
+textarea.error,
+select.error {
+  border-color: red; /* Replace with your desired border color for invalid input */
+}

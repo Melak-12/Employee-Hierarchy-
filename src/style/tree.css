@@ -1,0 +1,39 @@
+.tree {
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+  
+    /* font-size: xx-large!important; */
+ font-weight: 2rem !important;
+    background-color: rgb(47, 58, 77);
+    color: #29dc29;
+  }
+  /* CSS styles for the accordion container */
+.cool-accordion {
+  width: 100%;
+  max-width: 600px; /* Adjust the width as needed */
+  margin: 0 auto;
+  
+}
+
+/* CSS styles for the accordion item */
+.cool-accordion .Accordion.Item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* CSS styles for the accordion control (header) */
+.cool-accordion .Accordion.Control {
+  background-color: #f0f0f0;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* CSS styles for the accordion panel (content) */
+.cool-accordion .Accordion.Panel {
+  padding: 10px;
+}

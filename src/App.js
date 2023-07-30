@@ -1,57 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { ColorSchemeProvider } from '@mantine/core';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import EmpStracture from './pages/EmpStracture';
+import Profile from './pages/Profile';
+import Login from './auth/Login';
+import Register from './auth/Signup';
+import { setTreeDataa } from './actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
+  // const dispatch = useDispatch();
+  // const booleanValue = useSelector((state) => state.booleanReducer.booleanValue);
+  // const dispatch = useDispatch();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <ColorSchemeProvider colorScheme="light">
+      <BrowserRouter>
+        <Routes>
+          <Route path="profile/" element={<Profile />} />
+          <Route path="auth/" element={<Login />} />
+          <Route path="auth/register" element={<Register />} />
+          <Route path="/" element={<EmpStracture />} />
+        </Routes>
+      </BrowserRouter>
+      {/* <button onClick={() => dispatch(increment)}>plus</button> */}
+      {/* <button onClick={()=>dispatch(setTreeDataa())}>Set True</button> */}
+    </ColorSchemeProvider>
   );
 }
 
