@@ -1,68 +1,64 @@
-import React, {useState} from 'react'
-import { useForm } from "react-hook-form";
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
+const UpdateForm = ({treeData,selectedRecord,handleUpdateForm}) => {
+    const { register, reset, handleSubmit } = useForm()
+    const [errors, setErrors] = useState({});
 
-const EmpForm = ({ handlForm ,treeData}) => {
-  const { register, handleSubmit,reset } = useForm();
-  const [errors, setErrors] = useState({});
+    const positions = (data) => {
+        let options = [];
+        const addOptions = (data) => {
+          data.forEach((position) => {
+            options.push(
+              <option key={position.id} value={position.id}>
+                {position.position}
+              </option>
+            );
+            if (position.children) {
+              addOptions(position.children);
+            }
+          });
+        };
+    
+        addOptions(data);
+        return options;
+      };
+    
 
-  const positions = (data) => {
-    let options = [];
-    const addOptions = (data) => {
-      data.forEach((position) => {
-        options.push(
-          <option key={position.id} value={position.id}>
-            {position.position}
-          </option>
-        );
-        if (position.children) {
-          addOptions(position.children);
-        }
-      });
-    };
-
-    addOptions(data);
-    return options;
-  };
-
-  const onSubmit = (data) => {
-    const {  position, description, parentId, name } = data;
-    const newChild = {
-      position: position,
-      description: description, 
-      parentId:parentId||'',
-      name: name
-    };
-  
-    const newErrors = {};
+    const onSubmit = (data) => {
+        const {  position, description, parentId, name } = data;
+        const newChild = {
+            position: position,
+            description: description, 
+            parentId:parentId||'',
+            name: name
+          };
+          const newErrors = {};
  
-    if (!parentId) {
-      newErrors.parentId = 'Parent Position is required';
-    }
-
-    if (!position) {
-      newErrors.position = 'Position is required';
-    }
-
-    if (!name) {
-      newErrors.name = 'Name is required';
-    }
-    setErrors(newErrors);
-
-    if (Object.keys(newErrors).length === 0) {
-      console.log("parentId is" + parentId,newChild.id)
-      handlForm(newChild);
-      reset();
-    }
-  };
-
-  return (
-    <>
+          if (!parentId) {
+            newErrors.parentId = 'Parent Position is required';
+          }
       
-      <form
+          if (!position) {
+            newErrors.position = 'Position is required';
+          }
+      
+          if (!name) {
+            newErrors.name = 'Name is required';
+          }
+          setErrors(newErrors);
+      
+          if (Object.keys(newErrors).length === 0) {
+            console.warn("update form values are  is" +newChild.name)
+            handleUpdateForm(newChild);
+            reset();
+          }
+    }
+
+  return (<>
+    <form
         className="w-full max-w-lg m-auto py-10 mt-10 px-10 border"
         onSubmit={handleSubmit(onSubmit)}
-      >
-       
+        >
         <div>
           
           <label className="text-gray-600  font-medium">Position</label><br />
@@ -70,7 +66,8 @@ const EmpForm = ({ handlForm ,treeData}) => {
           ${ errors.position&& 'border-red-500'}`}
             name="position"
             placeholder="CEO, Backend Engineer, etc."
-            {...register('position')}
+                    {...register('position')}
+                    defaultValue={selectedRecord.position}
           />
           {errors.position && <span className="text-red-500">{errors.position}</span>}
           <br />
@@ -80,7 +77,9 @@ const EmpForm = ({ handlForm ,treeData}) => {
             className="border-solid mb-5 border-gray-300 border py-2 px-4 w-full rounded text-gray-700 focus:outline-none focus:ring-1 focus:ring-green-500"
             name="disk"
             placeholder="owner of the company,..."
-            {...register('description')}
+                    {...register('description')}
+                    defaultValue={selectedRecord.description}
+                    
           />
             
           <br />
@@ -103,7 +102,9 @@ const EmpForm = ({ handlForm ,treeData}) => {
           ${errors.name && 'border-red-500' }`}
             name="name"
             placeholder="yemariam,elsabet etc."
-            {...register('name')}
+                    {...register('name')}
+                    defaultValue={selectedRecord.name}
+                    
           />
           {errors.name && <span className="text-red-500">{errors.name}</span>}
           
@@ -121,4 +122,4 @@ const EmpForm = ({ handlForm ,treeData}) => {
   )
 }
 
-export default EmpForm;
+export default UpdateForm

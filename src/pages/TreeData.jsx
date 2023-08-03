@@ -179,13 +179,13 @@ const TreeData = ({ treeD, setTreeData2 }) => {
 
     return (
       <>  
-        <div className="cool-accordion">
+        <div className="cool-accordion" key={positionData.id}>
 
         <Accordion className=''>
           <Accordion.Item value="customization">
               <Accordion.Control onClick={() => setTreeData2(children)} className='tree text-2xl bg-slate-400 rounded-2xl mt-3 text-slate-800 font-sans hover:bg-slate-600 hover:text-green-500'>
                 {positionData.position}</Accordion.Control>
-             <Accordion.Panel className=''>
+             <Accordion.Panel className=''key={positionData.id}>
             {children.map((child) => renderPosition(child))}</Accordion.Panel>
 
           </Accordion.Item>
@@ -201,7 +201,7 @@ const TreeData = ({ treeD, setTreeData2 }) => {
       <div className='tree-container' style={{ borderRadius: 9 }}>
         <Box maw={400} mx="auto" className='mt-4 text-green-600'>
           {
-            console.warn("the tree is", treeD)
+            // console.warn("the tree is", treeD)
           
           }
           {

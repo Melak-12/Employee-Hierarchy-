@@ -7,6 +7,7 @@ import Footer from './Footer';
 import NavBar from './NavBar';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchTreeData } from '../reducer/treeAsyncThunk';
 
 const EmpStracture = () => {
   const dispatch = useDispatch();
@@ -15,19 +16,7 @@ const EmpStracture = () => {
   const [treeData2,setTreeData2]=useState([])
   
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('https://employee-stracture-default-rtdb.firebaseio.com/tree.json');
-        const data = response.data;
-        const positions = data ? Object.values(data) : [];
-        // setTreeData(positions);
-        dispatch()
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
+    dispatch(fetchTreeData())
   }, [treeData2,dispatch]);
   return (
     <>
