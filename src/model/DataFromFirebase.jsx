@@ -26,27 +26,15 @@ const DataFromFirebase = ({ treeData2 }) => {
   useEffect(() => {
     dispatch(fetchTreeData())
   }, [dispatch]);
-  
-  const openModal = () => {
-    setIsModal2Visible((prev) => !prev);
-  };
-
-  const handleUpdate = (record) => {
-    setIsModalVisible(true);
-  }
-
-  const handleModalCancel = () => {
-    setIsModal2Visible(false);
-    setIsModalVisible(false);
-  };
-
+ 
+ 
   const deleteEmployeePosition = async (id) => {
     const hasChildren = treeData.some((position) => position.parentId === id);
     if (hasChildren) {
         setShowAlertMsg('faild');
         setTimeout(() => {
          setShowAlertMsg('');
-        }, 4000);
+        }, 3000);
     } else {
       setShowSpinner(true);
       try {
@@ -83,7 +71,6 @@ const DataFromFirebase = ({ treeData2 }) => {
       });
       dispatch(addEmployee(positionWithId))
       setIsModal2Visible(false);
-      setIsModalVisible(false);
       setTimeout(() => {
         setShowAlertMsg('');
       }, 4000);
@@ -91,12 +78,6 @@ const DataFromFirebase = ({ treeData2 }) => {
       alert('Error adding new employee position:', error);
     }
   };
-
-  const handleUpdateCancel = () => {
-    setIsModal2Visible(false);
-    setIsModalVisible(false);
-  };
-  
 
   const updateEmployeePosition = async (id, updatedPosition) => {
     setShowSpinner(true);
@@ -108,7 +89,7 @@ const DataFromFirebase = ({ treeData2 }) => {
           setShowSpinner(false);
         }, 2000);
       });
-      handleUpdateCancel();
+      setIsModalVisible(false);
       dispatch(updateEmployee(updatedData))
       setTimeout(() => {
         setShowAlertMsg('');
@@ -147,22 +128,22 @@ const DataFromFirebase = ({ treeData2 }) => {
     <div> 
     
       {showAlertMsg && showAlertMsg === 'faild' ?
-        <Alert className='w-72 -mt-36 text-white' icon={<IconAlertCircle size="3rem" />} title="Notice!" color="red" radius="lg" variant="filled">
+        <Alert className='w-72 shadow-2xl text-white' icon={<IconAlertCircle size="3rem" />} title="" color="red" radius="lg" variant="filled">
          {"Please Delete the child first !" }
          </Alert>
-        : showAlertMsg && <Alert className='w-72 -mt-36' icon={<IconAlertCircle size="3rem" />} title="Notice!" color="green" radius="lg" variant="filled">
+        : showAlertMsg && <Alert className='w-72 shadow-2xl' icon={<IconAlertCircle size="3rem" />} title="" color="green" radius="lg" variant="filled">
         {showAlertMsg }
         </Alert> 
        }
       
       {/* //&  COMPONENT
-      */}<TableData treeData={treeData} treeData2={treeData2}  handleUpdate={handleUpdate} handleDelete={deleteEmployeePosition} setSelectedRecord={(newd)=>setSelectedRecord(newd) } />
+      */}<TableData treeData={treeData} treeData2={treeData2}  handleUpdate={()=>setIsModalVisible(true)} handleDelete={deleteEmployeePosition} setSelectedRecord={(newd)=>setSelectedRecord(newd) } />
      
       <div>
         <Modal
           opened={isModal2Visible}
           centered
-          onClose={handleModalCancel}
+          onClose={()=>setIsModal2Visible(false)}
           title={
             <span className=" flex  text-green-100 bg-slate-500 ml-20 max-w-full rounded-lg pl-11 p-3 pr-11 font-sans">
               Add Employee Position
@@ -175,7 +156,7 @@ const DataFromFirebase = ({ treeData2 }) => {
       </div>
       <button
         className="mt-4 bg-green-500 hover:bg-green-600 text-green-100 border-spacing-3 shadow py-3 px-6 font-semibold text-md rounded"
-        onClick={openModal}> Add Employee Position
+        onClick={()=>setIsModal2Visible((prev) => !prev)}> Add Employee Position
       </button>
                
      <Modal
@@ -185,9 +166,7 @@ const DataFromFirebase = ({ treeData2 }) => {
           </span>
         }
         opened={isModalVisible&&selectedRecord}
-        onOk={handleUpdateSubmit}
-        onClose={handleUpdateCancel}
-        okButtonProps={{ style: { color: 'white', backgroundColor: '#00cc00' } }}>
+        onClose={()=>setIsModalVisible(false)}>
         {/* //&  COMPONENT
           */}<UpdateForm treeData={treeData} selectedRecord={selectedRecord} handleUpdateForm={ handleUpdateSubmit} />  
       </Modal>

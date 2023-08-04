@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../style/tree.css';
 import axios from 'axios';
-import { Button, Group, Collapse, Box, Accordion } from '@mantine/core';
+import { Box, Accordion } from '@mantine/core';
 import { useSelector } from 'react-redux';
 
 
@@ -162,6 +162,7 @@ const treeData = [
   }
 ];
 const TreeData = ({ treeD, setTreeData2 }) => {
+
   const treeData=useSelector(((state)=>state.treeD.empData))
 
   const handleAddPosition = async () => {
@@ -175,19 +176,20 @@ const TreeData = ({ treeD, setTreeData2 }) => {
 
   
   const renderPosition = (positionData) => {
-    const children = treeData.filter((item) =>positionData.id=== item.parentId);
+    const children = treeData.filter((item) => positionData.id === item.parentId);
+    // const parentPosition = positionData.position;
+    // console.warn(parentPosition)
 
     return (
       <>  
-        <div className="cool-accordion" key={positionData.id}>
+        <div className="cool-accordion">
 
         <Accordion className=''>
           <Accordion.Item value="customization">
-              <Accordion.Control onClick={() => setTreeData2(children)} className='tree text-2xl bg-slate-400 rounded-2xl mt-3 text-slate-800 font-sans hover:bg-slate-600 hover:text-green-500'>
+              <Accordion.Control  onClick={() => setTreeData2(children)} className='tree text-2xl bg-slate-400 rounded-2xl mt-3 text-slate-800 font-sans hover:bg-slate-600 hover:text-green-500'>
                 {positionData.position}</Accordion.Control>
-             <Accordion.Panel className=''key={positionData.id}>
+             <Accordion.Panel className=''>
             {children.map((child) => renderPosition(child))}</Accordion.Panel>
-
           </Accordion.Item>
           </Accordion>
         </div>
@@ -200,10 +202,7 @@ const TreeData = ({ treeD, setTreeData2 }) => {
     <>
       <div className='tree-container' style={{ borderRadius: 9 }}>
         <Box maw={400} mx="auto" className='mt-4 text-green-600'>
-          {
-            // console.warn("the tree is", treeD)
-          
-          }
+         
           {
             treeD.map((item) => {
             if (item.parentId === '') {
@@ -227,9 +226,4 @@ const TreeData = ({ treeD, setTreeData2 }) => {
 };
 
 export default TreeData;
-export const sendDataToTable = (rows) => {
-  // const [dataToTable, sendDataToTable] = useState({});
 
-  // console.warn("the data", rows[0].name)
-  // sendDataToTable(rows)
-}

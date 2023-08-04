@@ -1,15 +1,13 @@
 import { Button, Pagination, Popover, Switch, Table, Text } from '@mantine/core';
 import React, { useState } from 'react';
 
-const TableData = ({ treeData, treeData2, handleUpdate, handleDelete, setSelectedRecord }) => {
+const TableData = ({ treeData, treeData2, handleUpdate, handleDelete, setSelectedRecord ,parentPos}) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [checked, setChecked] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  if (checked) {
-    treeData = treeData;
-  } else if (!checked && treeData2) {
+  if (!checked && treeData2) {
     treeData = treeData2;
   }
 
@@ -18,8 +16,7 @@ const TableData = ({ treeData, treeData2, handleUpdate, handleDelete, setSelecte
     handleUpdate(data);
   };
 
-  const filteredTreeData = treeData.filter(
-    (element) =>
+  const filteredTreeData = treeData.filter((element) =>
       element.position.toLowerCase().includes(searchQuery.toLowerCase()) ||
       element.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       element.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -29,6 +26,15 @@ const TableData = ({ treeData, treeData2, handleUpdate, handleDelete, setSelecte
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentItems = filteredTreeData.slice(startIndex, endIndex);
+  const parentDetail = (dd) => {
+    const pos = '';
+    for (let i = 0; i < currentItems.length; i++){
+      if (currentItems[i].id === dd) {
+        pos=currentItems.position
+      }
+    }
+    console.warn(currentItems[currentItems.length-1])
+  }
 
   return (
     <>
@@ -61,9 +67,9 @@ const TableData = ({ treeData, treeData2, handleUpdate, handleDelete, setSelecte
             <tr
               key={element.id}
               className="font-sans hover:text-green-600"
-              // onClick={() => alert('row Data')}
             >
-              <td>{element.position}</td>
+                
+              <td onClick={()=>parentDetail(element.parentId)}>{element.position}</td>
               <td>{element.description}</td>
               <td>{element.name}</td>
               <td>

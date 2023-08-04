@@ -5,15 +5,13 @@ import DataFromFirebase from '../model/DataFromFirebase';
 import '../style/headerText.css'
 import Footer from './Footer';
 import NavBar from './NavBar';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTreeData } from '../reducer/treeAsyncThunk';
 
 const EmpStracture = () => {
   const dispatch = useDispatch();
-  // const [treeData, setTreeData] = useState([])
   const treeData=useSelector(((state)=>state.treeD.empData))
-  const [treeData2,setTreeData2]=useState([])
+  const [treeData2, setTreeData2] = useState([])
   
   useEffect(() => {
     dispatch(fetchTreeData())
@@ -29,7 +27,7 @@ const EmpStracture = () => {
               Hierarchy of Employee Positions
             </button>
             <div className="flex justify-center">
-                <TreeData treeD={treeData}  setTreeData2={(e)=>setTreeData2(e)}/>
+                <TreeData treeD={treeData} setTreeData2={(e) => setTreeData2(e)}  />
             </div>
           </div>
           <div className="w-2/3 bg-slate-300 text-center p-7 rounded-tl-sm">
