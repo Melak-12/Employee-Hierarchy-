@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
       <footer className="bg-white rounded-tl-lg rounded-tr-lg shadow  dark:bg-gray-800 p-3">
-          <span  className='text-3xl shadow-lg font-bold m-5 mt-7 text-white'><b className='text-green-400 font-bold'>P</b>erago</span>
+          <span  className='text-3xl shadow-lg font-bold m-5 mt-7 text-slate-400'><b className='text-green-400 font-bold '><i className=' text-black rounded-lg pr-2  bg-green-500'>P</i></b>erago</span>
                 <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between  -mt-4 mb-3">
                 <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://melak.tk/" className="hover:underline hover:text-green-400">Melak.tk</a> &nbsp;&nbsp;All Rights Reserved.
                 </span>

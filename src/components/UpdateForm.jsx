@@ -37,6 +37,9 @@ const UpdateForm = ({treeData,selectedRecord,handleUpdateForm}) => {
           if (!parentId) {
             newErrors.parentId = 'Parent Position is required';
           }
+          if (position==="CEO") {
+            newErrors.parentId = 'Since the CEO does not have parent , it is not editable!';
+          }
       
           if (!position) {
             newErrors.position = 'Position is required';

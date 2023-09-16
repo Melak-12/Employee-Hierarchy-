@@ -7,7 +7,7 @@ import TableData from '../components/TableData';
 import { useDispatch, useSelector } from 'react-redux';
 import { addEmployee,updateEmployee,deleteEmployee } from '../reducer/treeSlice';
 import { fetchTreeData } from '../reducer/treeAsyncThunk';
-import { Alert, Modal } from '@mantine/core';
+import {  Modal,Notification} from '@mantine/core';
 import { IconAlertCircle } from '@tabler/icons';
 import UpdateForm from '../components/UpdateForm';
 
@@ -127,18 +127,22 @@ const DataFromFirebase = ({ treeData2 }) => {
   return (
     <div> 
     
-      {showAlertMsg && showAlertMsg === 'faild' ?
-        <Alert className='w-72 shadow-2xl text-white' icon={<IconAlertCircle size="3rem" />} title="" color="red" radius="lg" variant="filled">
-         {"Please Delete the child first !" }
-         </Alert>
-        : showAlertMsg && <Alert className='w-72 shadow-2xl' icon={<IconAlertCircle size="3rem" />} title="" color="green" radius="lg" variant="filled">
-        {showAlertMsg }
-        </Alert> 
-       }
-      
+     
       {/* //&  COMPONENT
       */}<TableData treeData={treeData} treeData2={treeData2}  handleUpdate={()=>setIsModalVisible(true)} handleDelete={deleteEmployeePosition} setSelectedRecord={(newd)=>setSelectedRecord(newd) } />
-     
+      
+      {showAlertMsg && showAlertMsg === 'faild' ?
+      // <Notification/>
+       
+        <Notification className='w-72 mt-2 shadow-2xl ml-96 -mr-96 text-white' icon={<IconAlertCircle size="3rem" />} title="" color="red" radius="lg" variant="filled">
+         {"Please Delete the child first !" }
+        </Notification>
+        : showAlertMsg && 
+        
+        <Notification className='w-72 shadow-2xl ml-96 -mr-96' icon={<IconAlertCircle size="3rem" />} title="" color="green" radius="lg" variant="filled">
+        {showAlertMsg }
+        </Notification> 
+       }
       <div>
         <Modal
           opened={isModal2Visible}
@@ -171,6 +175,8 @@ const DataFromFirebase = ({ treeData2 }) => {
           */}<UpdateForm treeData={treeData} selectedRecord={selectedRecord} handleUpdateForm={ handleUpdateSubmit} />  
       </Modal>
       {showSpinner && <Spinner />}
+      
+      
     </div>
   );
 };

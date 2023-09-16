@@ -76,10 +76,10 @@ const SideBar = () => {
           <List>
             <i className="fas fa-sign-out-alt hover:text-red-700 text-red-500 mb-6 flex "> &nbsp;&nbsp;&nbsp; <span className='font-sans text-lg -mt-1 '> Log Out</span> </i>
           </List>
-          <List className='mt-80 flex text-center'>
+          <List className='mt-72 flex text-center'>
             <hr className="border-t-2 border-gray-400 border-dashed my-5"/>
 
-          <i className="fas fa-cog hover:text-green-500 text-slate-400 mb-6 inline mr-3 pr-3"><span className='font-sans text-lg -mt-1 p-4 '>Settings</span> </i>
+          <i className="fas fa-cog hover:text-green-500 text-slate-400 mb-6 inline mr-3 pr-3"><span className='font-sans text-lg  p-4 '>Settings</span> </i>
             
             
           </List>

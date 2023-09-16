@@ -5,7 +5,7 @@ import DataFromFirebase from '../model/DataFromFirebase';
 import '../style/headerText.css'
 import Footer from './Footer';
 import NavBar from './NavBar';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector ,} from 'react-redux';
 import { fetchTreeData } from '../reducer/treeAsyncThunk';
 
 const EmpStracture = () => {

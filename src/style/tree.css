@@ -37,3 +37,11 @@
 .cool-accordion .Accordion.Panel {
   padding: 10px;
 }
+/* tree.css */
+.hide-accordion-icon .mantine-accordion-control > div {
+  display: none;
+}
+.hide-accordion-icon .accordion-icon {
+  /* Hide the default icon when the 'hide-accordion-icon' class is present */
+  display: none;
+}

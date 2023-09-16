@@ -3,6 +3,7 @@ import SideBar from '../components/SideBar'
 import { useNavigate } from 'react-router-dom';
 import {  Badge,Button,Modal,Notification,NotificationsProvider,} from '@mantine/core';
 import { Alert } from '@material-tailwind/react';
+import Logo from '../assets/perago2.png'
 
 const NavBar = () => {
   const nav = useNavigate();
@@ -52,7 +53,11 @@ const NavBar = () => {
         </div>
         
               <div className="flex pl-11 text-2xl font-bold text-slate-300" onClick={()=>nav('/')}>
-              <span onClick={handleSpanClick} className='text-3xl border-2 border-slate-600 shadow-lg  rounded-2xl pr-2 pl-2 font-bold ml-3 mr-96 text-white'><b className='text-green-400 font-bold'>P</b>erago</span>
+              <span onClick={handleSpanClick} className='text-3xl border-2 border-slate-600 shadow-lg  rounded-2xl   pl-2 font-bold ml-3 mr-96 text-white'><img src={Logo} alt="Logo"   width="150"className="logo" /></span>
+          {/* <img src="../assets/perago2.png" alt="logo" /> */}
+          {/* <Logo/> */}
+          
+
           <span className='pt-2'>
             
               <span className='shadow-sm pl-3 pr-3 border-slate-700 border-2 rounded-lg mr-11 text-base p-2 text-slate-300 hover:bg-green-700 hover:text-white'>
@@ -79,8 +84,7 @@ const NavBar = () => {
               <Badge  radius='lg' className='bg-red-600 text-white rounded-4xl -mt-1 '>3</Badge>
           </Button>
           <Button
-              className="-mt-6 p-1 font-sm text-sm mx-3 rounded-3xl hover:bg-slate-700  "
-            >
+              className="-mt-6 p-1 font-sm text-sm mx-3 rounded-3xl hover:bg-slate-700  ">
                             <i className="far fa-bell fa-2x text-slate-400 hover:text-green-500  " ></i>
               
               <Badge  radius='lg' className='bg-red-600 text-white rounded-4xl -mt-1 '>2</Badge>
