@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 
 
-const TreeData = ({ treeD, setTreeData2 }) => {
+const TreeData = ({ treeDa, setTreeData2 }) => {
   const treeData2 = [
     {
       id: "0",
@@ -213,7 +213,7 @@ const TreeData = ({ treeD, setTreeData2 }) => {
         <Box maw={400} mx="auto" className='mt-4 text-green-600'>
          
           {
-            treeD.map((item) => {
+            treeDa.map((item) => {
             if (item.parentId === ''||item.parentId===null) {
             
               return renderPosition(item);
@@ -225,7 +225,7 @@ const TreeData = ({ treeD, setTreeData2 }) => {
         
         <button
         className="mt-52 mb-12 bg-green-500 hover:bg-green-600 text-green-100 border-spacing-3 shadow py-3 px-6 font-semibold text-md rounded"
-        onClick={handleAddPosition}
+        // onClick={handleAddPosition}
       >
           Upload the Data
       </button>

@@ -27,7 +27,7 @@ const EmpStracture = () => {
               Hierarchy of Employee Positions
             </button>
             <div className="flex justify-center">
-                <TreeData treeD={treeData} setTreeData2={(e) => setTreeData2(e)}  />
+                <TreeData treeDa={treeData} setTreeData2={(e) => setTreeData2(e)}  />
             </div>
           </div>
           <div className="w-2/3 bg-slate-300 text-center p-7 rounded-tl-sm">

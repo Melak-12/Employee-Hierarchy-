@@ -13,9 +13,7 @@ const treeSlice = createSlice({
   name: "tree",
   initialState,
   reducers: {
-    // setBooleanTrue(state) {
-    //   state.empData = 1;
-    // },
+ 
     addEmployee(state, action) {
       state.empData.push(action.payload);
     },

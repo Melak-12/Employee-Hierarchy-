@@ -66,7 +66,7 @@ const EmpForm = ({ handlForm ,treeData}) => {
         <div>
           
           <label className="text-gray-600  font-medium">Position</label><br />
-          <input className={`border-solid border-gray-300 border py-2 mb-5 px-4 w-full rounded text-gray-700 focus:outline-none focus:ring-1 focus:ring-green-500
+          <input className={`border-newErrorssolid border-gray-300 border py-2 mb-5 px-4 w-full rounded text-gray-700 focus:outline-none focus:ring-1 focus:ring-green-500
           ${ errors.position&& 'border-red-500'}`}
             name="position"
             placeholder="CEO, Backend Engineer, etc."
